@@ -1,0 +1,266 @@
+{
+    "status": "ok",
+    "totalResults": 20,
+    "articles": [
+        {
+            "source": {
+                "id": "the-verge",
+                "name": "The Verge"
+            },
+            "author": "Jay Peters",
+            "title": "Knockout City is now free to play until you reach level 25",
+            "description": "Knockout City, a new multiplayer dodgeball game from EA and Velan Studios, is now free to try until you reach level 25. The game is available on PC, PS4, PS5, Xbox One, Xbox Series X / S, and Nintendo Switch.",
+            "url": "https://www.theverge.com/2021/5/31/22462044/knockout-city-free-to-play-level-25-ea-velan-studios-dodgeball",
+            "urlToImage": "https://cdn.vox-cdn.com/thumbor/kQXq51mKujhkHN3BcliaGCgi1-Q=/0x21:1022x556/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/22550762/koc_screenshot_16x9_1.jpg.adapt.crop16x9.575p.jpg",
+            "publishedAt": "2021-05-31T19:00:00Z",
+            "content": "You wont have to pay for Knockout City until you level up a bit\r\nA screenshot from Knockout City.\r\nImage: EA\r\nEA just released its chaotic and fun new multiplayer dodgeball game, Knockout City, on Ma\u2026 [+1433 chars]"
+        },
+        {
+            "source": {
+                "id": "the-verge",
+                "name": "The Verge"
+            },
+            "author": "Jacob Kastrenakes",
+            "title": "How bad is Google Photos\u2019 compression anyway?",
+            "description": "As Google Photos ends its free unlimited storage of \u201chigh quality\u201d compressed photos, we take a look at whether it\u2019s worth compressing your photos at all.",
+            "url": "https://www.theverge.com/2021/5/31/22461871/google-photos-compression-comparison-storage",
+            "urlToImage": "https://cdn.vox-cdn.com/thumbor/nCoDeSNPuNmOY6ekFFnH8W4wxqQ=/0x457:4032x2568/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/22550745/newlede.jpg",
+            "publishedAt": "2021-05-31T18:27:42Z",
+            "content": "How bad is Google Photos compression anyway?\r\nFree and unlimited compressed storage ends on June 1st\r\nMy cat, Pretzel. The original photo is on the left, the compressed version is on the right.\r\nGoog\u2026 [+4887 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC Sport",
+            "title": "Osaka withdraws from French Open",
+            "description": "Naomi Osaka says she is withdrawing from the French Open as a result of controversy over her refusal to speak to the media.",
+            "url": "http://www.bbc.co.uk/sport/tennis/57310701",
+            "urlToImage": "https://ichef.bbci.co.uk/live-experience/cps/624/cpsprodpb/13590/production/_97584297_breaking_news.png",
+            "publishedAt": "2021-05-31T18:22:42.7620376Z",
+            "content": "World number two Naomi Osaka says she is withdrawing from the French Open as a result of controversy over her refusal to speak to the media during the tournament.\r\nOn Sunday a joint statement from Gr\u2026 [+745 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "Covid: WHO renames UK and other variants with Greek letters",
+            "description": "The variant first detected in the UK becomes Alpha, with South Africa, Brazil and India also renamed.",
+            "url": "http://www.bbc.co.uk/news/world-57308592",
+            "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/15E18/production/_118742698_gettyimages-1232835602.jpg",
+            "publishedAt": "2021-05-31T18:22:23.3449947Z",
+            "content": "image copyrightGetty Images\r\nimage captionThe labels will not replace existing scientific names but are designed to make discussions easier and remove stigma\r\nThe World Health Organization (WHO) has \u2026 [+2128 chars]"
+        },
+        {
+            "source": {
+                "id": "the-verge",
+                "name": "The Verge"
+            },
+            "author": "Mary Beth Griggs",
+            "title": "Climate change responsible for about a third of heat deaths, study says",
+            "description": "As climate change heats up the world, heatwaves are becoming more ubiquitous. A new study finds that about 37 percent of heat-related deaths are attributable to human-caused climate change.",
+            "url": "https://www.theverge.com/2021/5/31/22461924/climate-change-heat-deaths-study",
+            "urlToImage": "https://cdn.vox-cdn.com/thumbor/466OWkSLNEfJ_I5OFYqOHWLmenY=/0x559:3901x2601/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/22550529/1010354674.jpg",
+            "publishedAt": "2021-05-31T16:55:05Z",
+            "content": "Heat-related deaths are a serious problem in a warming world\r\nIf you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.\r\nPeople try to keep cool in Lisbon, Po\u2026 [+2497 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "'Even one kid is exhausting': China's three-child policy",
+            "description": "China says couples can have up to three children, after census shows steep decline in birth rates.",
+            "url": "http://www.bbc.co.uk/news/world-asia-china-57309937",
+            "urlToImage": "https://ichef.bbci.co.uk/images/ic/400xn/p09k4m9x.jpg",
+            "publishedAt": "2021-05-31T16:22:24.0199101Z",
+            "content": "China has relaxed its child policy further, to allow couples to have up to three children. \r\nThe country scrapped its decades-old one-child policy in 2016, replacing it with a two-child limit. \r\nRece\u2026 [+164 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "Bangladesh arrests tiger poaching suspect after 20-year hunt",
+            "description": "The man known as \"Tiger Habib\" is alleged to have killed about 70 endangered Bengal tigers.",
+            "url": "http://www.bbc.co.uk/news/world-asia-57308587",
+            "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/16F83/production/_118738049_gettyimages-829003942.jpg",
+            "publishedAt": "2021-05-31T15:22:24.6635949Z",
+            "content": "image copyrightGetty Images\r\nimage captionFew Bengal tigers remain in the wild\r\nA man suspected of killing 70 endangered tigers has been arrested in Bangladesh after a 20-year search. \r\nHabib Talukde\u2026 [+2058 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC Sport",
+            "title": "Copa America to be hosted by Brazil",
+            "description": "The 2021 Copa America will be hosted by Brazil, after Argentina was stripped of the tournament just two weeks before it starts.",
+            "url": "http://www.bbc.co.uk/sport/football/57304063",
+            "urlToImage": "https://ichef.bbci.co.uk/live-experience/cps/624/cpsprodpb/13590/production/_97584297_breaking_news.png",
+            "publishedAt": "2021-05-31T14:52:25.5189627Z",
+            "content": "The 2021 Copa America will be hosted by Brazil, after Argentina was stripped of the tournament just two weeks before it starts.\r\nThe South American Football Confederation (Conmebol) said Argentina wa\u2026 [+762 chars]"
+        },
+        {
+            "source": {
+                "id": "the-verge",
+                "name": "The Verge"
+            },
+            "author": "Mary Beth Griggs",
+            "title": "Bacteria get a fresh gig as art restorers in Italy",
+            "description": "Microbes are back at work In Italy. A team of art restorers and scientists used bacteria to remove stubborn stains and grime from marble statues sculpted by Michelangelo.",
+            "url": "https://www.theverge.com/2021/5/31/22461712/bacteria-art-restoration-michelangelo-marble-medici",
+            "urlToImage": "https://cdn.vox-cdn.com/thumbor/zXSzAqj5rL7bVLnsqDhLBY4PM1w=/0x328:3541x2182/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/22550292/146325207.jpg",
+            "publishedAt": "2021-05-31T14:18:35Z",
+            "content": "Michelangelos marble statues are the latest to get a bacterial facelift \r\nAn image of Michalangelos The Day, part of the tomb of Giuliano de Medici. This image was taken in 2002, long before bacteria\u2026 [+2005 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "Gaza conflict: Instagram changes algorithm after alleged bias",
+            "description": "Instagram says its ranking system had a \"bigger impact than expected\" on some types of posts.",
+            "url": "http://www.bbc.co.uk/news/technology-57306800",
+            "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/1610F/production/_118738309_gettyimages-1306472287.jpg",
+            "publishedAt": "2021-05-31T11:52:19.4465503Z",
+            "content": "image copyrightGetty Images\r\nInstagram is changing the way it showcases content after being accused of suppressing pro-Palestinian messages during the recent Gaza conflict. \r\nThe app had favoured ori\u2026 [+2469 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "France police 'neutralise' armed ex-soldier after Dordogne manhunt",
+            "description": "The 29-year-old man was injured in a shoot-out with police after a 24-hour manhunt, reports say.",
+            "url": "http://www.bbc.co.uk/news/world-europe-57304907",
+            "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/15AED/production/_118731888_gettyimages-1233183538.jpg",
+            "publishedAt": "2021-05-31T11:37:22.467453Z",
+            "content": "image copyrightGetty Images\r\nimage captionHundreds of officers are searching for the man\r\nAn armed ex-soldier on the run in south-western France has been \"neutralised\" after a 24-hour manhunt, the in\u2026 [+323 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "Tarzan actor Joe Lara, 58, presumed dead in plane crash",
+            "description": "He and six others are missing believed dead after their plane crashed into a lake in the US.",
+            "url": "http://www.bbc.co.uk/news/world-us-canada-57304900",
+            "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/229F/production/_118736880_tarzan2.jpg",
+            "publishedAt": "2021-05-31T09:52:22.0661557Z",
+            "content": "image copyrightGetty Images\r\nimage captionJoe Lara acted in the 1990s TV series Tarzan: The Epic Adventures\r\nUS actor Joe Lara, best known for playing Tarzan, is presumed dead after a plane crash in \u2026 [+1935 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "Covid-19: UK in early stages of third wave - scientist",
+            "description": "A government scientist says there has been exponential growth in the number of new cases.",
+            "url": "http://www.bbc.co.uk/news/uk-57304515",
+            "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/EB03/production/_118736106_hi067606297.jpg",
+            "publishedAt": "2021-05-31T08:22:20.7499755Z",
+            "content": "image copyrightGetty Images\r\nThere are signs the UK is in the early stages of a third wave of coronavirus infections, a scientist advising the government has said. \r\nProf Ravi Gupta, from the Univers\u2026 [+2302 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "China allows couples to have three children",
+            "description": "China allows couples to have up to three children in major policy shift sparked by falling birth rate",
+            "url": "http://www.bbc.co.uk/news/world-asia-china-57303592",
+            "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/83B3/production/_115651733_breaking-large-promo-nc.png",
+            "publishedAt": "2021-05-31T07:52:21.9768448Z",
+            "content": "China has announced that it will allow each couple to have up to three children, marking the end of a strict two-child policy.\r\nAccording to state media outlet Xinhua, the change was approved by Pres\u2026 [+882 chars]"
+        },
+        {
+            "source": {
+                "id": "the-verge",
+                "name": "The Verge"
+            },
+            "author": "Sam Byford",
+            "title": "Xiaomi says it can now fully charge a phone in eight minutes at 200W",
+            "description": "Xiaomi has announced new wired and wireless charging technology that it claims sets new world records. A modified Mi 11 Pro can fill up in just eight minutes at 120W.",
+            "url": "https://www.theverge.com/2021/5/30/22461435/xiaomi-fast-charging-world-record-200w-wired-120w-wireless",
+            "urlToImage": "https://cdn.vox-cdn.com/thumbor/MTI4dMLGwmVyGe0Zo-10o2jW3X8=/0x151:2100x1250/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/22549983/xiaomi.jpg",
+            "publishedAt": "2021-05-31T03:53:32Z",
+            "content": "New world records in wired and wireless charging\r\nXiaomi has shown off its latest fast charging tech demo, and consequently is claiming the new world records for both wired and wireless charging spee\u2026 [+1454 chars]"
+        },
+        {
+            "source": {
+                "id": "the-verge",
+                "name": "The Verge"
+            },
+            "author": "Chaim Gartenberg",
+            "title": "Intel\u2019s latest 11th Gen processor brings 5.0GHz speeds to thin and light laptops",
+            "description": "Intel has a pair of new, more powerful U-series processors at Computex, along with a new 5G modem for OEMs to integrate into their laptops.",
+            "url": "https://www.theverge.com/2021/5/30/22459025/intel-11th-gen-tiger-lake-processor-5g-modem-computex",
+            "urlToImage": "https://cdn.vox-cdn.com/thumbor/ZgUG4EmiNYiIctboPBLPscJyCjE=/0x146:2040x1214/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/22248421/acastro_210120_1777_intel_0002.jpg",
+            "publishedAt": "2021-05-31T02:30:00Z",
+            "content": "Along with a new 5G modem for laptops\r\nIllustration by Alex Castro / The Verge\r\nIntel made a splash earlier in May with the launch of its first 11th Gen Tiger Lake H-series processors for more powerf\u2026 [+1834 chars]"
+        },
+        {
+            "source": {
+                "id": "the-verge",
+                "name": "The Verge"
+            },
+            "author": "Kim Lyons",
+            "title": "Instagram making changes to its algorithm after it was accused of censoring pro-Palestinian content",
+            "description": "Instagram typically surfaces original content in its stories before reposted content, but will now begin to give equal weighting to both. It says the change is not only in response to concerns about pro-Palestinian content.",
+            "url": "https://www.theverge.com/2021/5/30/22460946/instagram-making-changes-algorithm-censoring-pro-palestinian-content",
+            "urlToImage": "https://cdn.vox-cdn.com/thumbor/AhEDh8cXLzPzD8FmGa8EbJmzzbs=/0x146:2040x1214/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/19228500/acastro_190919_1777_instagram_0001.0.jpg",
+            "publishedAt": "2021-05-30T19:39:54Z",
+            "content": "The company says it will begin ranking original and re-shared content equally\r\nIllustration by Alex Castro / The Verge\r\nFacebook-owned Instagram has made changes to its algorithm after a group of its\u2026 [+2677 chars]"
+        },
+        {
+            "source": {
+                "id": "the-verge",
+                "name": "The Verge"
+            },
+            "author": "Kim Lyons",
+            "title": "Vilnius, Lithuania built a \u2018portal\u2019 to another city to help keep people connected",
+            "description": "Vilnius installed a circular \u201cdoor\u201d for a portal near its train station that connects to a portal in Lublin, Poland. The portals both have large screens and cameras that broadcast live images between the two cities\u2014 a kind of digital bridge.",
+            "url": "https://www.theverge.com/2021/5/30/22460964/vilnius-lithuania-portal-poland-connection-pandemic",
+            "urlToImage": "https://cdn.vox-cdn.com/thumbor/6Xv2YBStcOxHjkg9xUdSK7x3hu0=/0x124:1731x1030/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/22549346/vilnius_portal.jpg",
+            "publishedAt": "2021-05-30T18:57:07Z",
+            "content": "The project is meant to prompt people rethink the idea of unity\r\nGo Vilnius\r\nWeary of pandemic travel restrictions and aching to get out and see new people? The city of Vilnius, Lithuania has interes\u2026 [+2562 chars]"
+        },
+        {
+            "source": {
+                "id": "the-verge",
+                "name": "The Verge"
+            },
+            "author": "Allison Johnson",
+            "title": "ZTE Axon 30 Ultra review: the right stuff for the right price",
+            "description": "A big screen and top-shelf performance for $749.",
+            "url": "https://www.theverge.com/22458629/zte-axon-30-ultra-review-screen-price-specs",
+            "urlToImage": "https://cdn.vox-cdn.com/thumbor/AZ-mE0Dtc-n938ofy3ViMUboTRs=/0x220:2040x1288/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/22541695/ajohnson_20210524_4601_0001.jpg",
+            "publishedAt": "2021-05-30T14:00:00Z",
+            "content": "If you buy something from a Verge link, Vox Media may earn a commission. See our ethics statement.The ZTE Axon 30 Ultra is a high-end device that checks all the right hardware boxes. Snapdragon 888 p\u2026 [+12109 chars]"
+        },
+        {
+            "source": {
+                "id": "the-verge",
+                "name": "The Verge"
+            },
+            "author": "Kim Lyons",
+            "title": "Google reportedly made it difficult for smartphone users to find privacy settings",
+            "description": "Unredacted documents in Arizona\u2019s lawsuit against Google show that company employees were aware that the search giant had made it hard for Android smartphone users to keep location information private.",
+            "url": "https://www.theverge.com/2021/5/29/22460070/google-difficult-android-privacy-settings-arizona",
+            "urlToImage": "https://cdn.vox-cdn.com/thumbor/vVk-v8ybfbDgOFHvxi7yuMmaP2M=/0x146:2040x1214/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/22250976/acastro_210121_1777_google_0001.jpg",
+            "publishedAt": "2021-05-29T22:06:02Z",
+            "content": "The details come from unredacted documents in Arizonas lawsuit against the company\r\nIllustration by Alex Castro / The Verge\r\nUnredacted documents in Arizonas lawsuit against Google show that company \u2026 [+1522 chars]"
+        }
+    ]
+}
