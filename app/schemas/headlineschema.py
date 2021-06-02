@@ -1,7 +1,7 @@
 from app import ma
 from app.models.headlinesmodel import HeadlineModel
 
-class AreaSchema(ma.SQLAlchemyAutoSchema):
+class HeadlineSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = HeadlineModel
         load_instance = True
