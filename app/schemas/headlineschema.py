@@ -1,4 +1,4 @@
-from app import ma
+from app.config import ma
 from app.models.headlinesmodel import HeadlineModel
 
 class HeadlineSchema(ma.SQLAlchemyAutoSchema):

@@ -1,7 +1,7 @@
-from app import ma
+from app.config import ma
 from app.models.allnewsmodel import AllNewsModel
 
-class AreaSchema(ma.SQLAlchemyAutoSchema):
+class AllNewsSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = AllNewsModel
         load_instance = True

@@ -1,7 +1,7 @@
-from app import ma
+from app.config import ma
 from app.models.sourcesmodel import SourceModel
 
-class AreaSchema(ma.SQLAlchemyAutoSchema):
+class SourceSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = SourceModel
         load_instance = True
