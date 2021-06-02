@@ -19,6 +19,14 @@ class HeadlineModel(db.Model):
 
     def __init__(self,id,source,author,title,description,url,urlToImage,publishedAt,content):
         id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False, autoincrement=True)
+        source = db.Column(db.String(200))
+        author = db.Column(db.String(500))
+        title = db.Column(db.String)
+        description = db.Column(db.String)
+        url = db.Column(db.String)
+        urlToImage = db.Column(db.String)
+        publishedAt = db.Column(db.String)
+        content = db.Column(db.String)
 
 
     def json(self):
