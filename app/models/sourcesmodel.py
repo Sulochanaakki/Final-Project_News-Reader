@@ -34,6 +34,13 @@ class SourceModel(db.Model):
         self.country = country
 
 
+
+    def __repr__(self):
+        return 'HeadlineModel(id=%s,headlines_id=%s, allnews_id=%s, name=%s, \
+                description=%s, url=%s, category=%s,language=%s,country =%s)' % \
+               (self.id, self.headlines_id, self.allnews_id, self.name, self.description, self.url,
+                self.category, self.language, self.country)
+
     def json(self):
         obj = {
             'id': id,

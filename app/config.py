@@ -19,6 +19,10 @@ app.config['JSON_AS_ASCII'] = False
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
+@app.before_first_request
+def create_tables():
+    db.create_all()
+
 isOnDev = False
 app.debug = isOnDev
 
@@ -34,4 +38,7 @@ from app.views import externalapi
 #import db_create
 from app.schemas import headlineschema
 
-from app.views.headlinesview import HeadlinesList
+from app.views import externalapi
+from app.views.headlinesview import HeadlinesList, Headlines
+from app.views.allnewsview import AllNewsList, AllNews
+from app.views.sourcesview import SourcesList, Sources

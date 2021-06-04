@@ -4,7 +4,7 @@ import run
 from run import app
 import requests
 import json
-@app.route('/headlines')
+
 def headlines():
 
     query_params = {
@@ -16,14 +16,13 @@ def headlines():
     main_url = "https://newsapi.org/v2/top-headlines"
     my_headlines = requests.get(main_url, params=query_params)
     open_page = my_headlines.json()
-    #return open_page
-
-    with open('app\\db\\newsheadlines.json', 'w') as outfile:
-        json.dump(open_page, outfile, indent=4)
+    return open_page
 
 
 
-@app.route('/allnews')
+
+
+#@app.route('/allnews')
 def all_news():
     #following query parameters are used
     #source,sortBy and apiKey
@@ -35,13 +34,12 @@ def all_news():
     main_url = 'https://newsapi.org/v2/everything?'
     my_headlines = requests.get(main_url, params=query_params)
     open_page = my_headlines.json()
-    #return open_page
-
-    with open('app\\db\\allnews.json', 'w') as outfile:
-        json.dump(open_page, outfile, indent=4)
+    return open_page
 
 
-@app.route('/sources')
+
+
+#@app.route('/sources')
 def sources():
     #following query parameters are used
     #source,sortBy and apiKey
@@ -52,8 +50,5 @@ def sources():
     main_url = "https://newsapi.org/v2/sources?"
     my_headlines = requests.get(main_url, params=query_params)
     open_page = my_headlines.json()
-    #return open_page
+    return open_page
 
-
-    with open('app\\db\\sources.json', 'w') as outfile:
-        json.dump(open_page, outfile, indent=4)

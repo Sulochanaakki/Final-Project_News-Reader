@@ -29,6 +29,12 @@ class HeadlineModel(db.Model):
         self.content = content
 
 
+    def __repr__(self):
+        return 'HeadlineModel(id=%s,source=%s, author=%s, title=%s, \
+                description=%s, url=%s, urlToImage=%s,publishedAt=%s,content =%s)' % \
+               (self.id, self.name, self.author, self.title, self.description, self.url,
+                self.urlToImage, self.publishedAt, self.content)
+
     def json(self):
         obj = {
             'id': self.id,
