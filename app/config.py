@@ -7,7 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 #   Configure for local test
 #   This works with SQLite3
 project_dir = os.path.dirname(os.path.abspath(__file__))
-database_file = "sqlite:///{}".format(os.path.join(project_dir, "newsdatabase.sqlite"))
+database_file = "sqlite:///{}".format(os.path.join(project_dir, "db/newsdatabase.sqlite"))
 
 # Config app
 app = Flask(__name__)
@@ -23,7 +23,7 @@ ma = Marshmallow(app)
 def create_tables():
     db.create_all()
 
-isOnDev = False
+isOnDev = True
 app.debug = isOnDev
 
 api = Api(app,

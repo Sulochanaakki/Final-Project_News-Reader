@@ -4,8 +4,8 @@ import json
 from app.views import externalapi
 from app.config import api, isOnDev, project_dir
 
-from app.models.allnewsmodel  import AllNewsModel as TheModel
-from app.schemas.allnewsshema import AllNewsSchema as TheSchema
+from app.models.sourcesmodel import SourceModel as TheModel
+from app.schemas.sourceschema import SourceSchema as TheSchema
 from app.const import HttpStatus,EmptyValues
 
 #   Name of the current item/element
@@ -17,7 +17,7 @@ local_ns = api.namespace('Sources', description=CURRENT_NAME + ' related operati
 
 #   Database schemas
 sources_schema = TheSchema()
-sources_list_schema = TheSchema(many=True)
+
 #   Model required by flask_restx for expect on POST and PUT methods
 model_validator = local_ns.model(CURRENT_NAME, {
     'id': fields.Integer,
@@ -56,7 +56,7 @@ class SourcesList(Resource):
             return response
         try:
             element_json = request.get_json()
-            element_data = sources_list_schema.load(element_json)
+            element_data = sources_schema.load(element_json)
             element_data.save_to_db()
             response = jsonify(element_data.json())
             response.status_code = HttpStatus.CREATED

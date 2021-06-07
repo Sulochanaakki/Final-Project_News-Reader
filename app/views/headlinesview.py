@@ -17,7 +17,7 @@ local_ns = api.namespace('Headlines', description=CURRENT_NAME + ' related opera
 
 #   Database schemas
 headline_schema = TheSchema()
-headline_list_schema = TheSchema(many=True)
+#headline_list_schema = TheSchema(many=True)
 #   Model required by flask_restx for expect on POST and PUT methods
 model_validator = local_ns.model(CURRENT_NAME, {
     'id': fields.Integer,
@@ -49,6 +49,7 @@ class HeadlinesList(Resource):
 
     @local_ns.doc('Create an ' + CURRENT_NAME)
     @local_ns.expect(model_validator)
+    #response error getting message:Not allowed
     def post(self):
         if not isOnDev:
             response = jsonify({'message': 'Not allowed'})
@@ -56,7 +57,7 @@ class HeadlinesList(Resource):
             return response
         try:
             element_json = request.get_json()
-            element_data = headline_list_schema.load(element_json)
+            element_data = headline_schema.load(element_json)
             element_data.save_to_db()
             response = jsonify(element_data.json())
             response.status_code = HttpStatus.CREATED
@@ -89,6 +90,7 @@ class Headlines(Resource):
                       'id': 'id of the ' + CURRENT_NAME + ' to update'})
     @local_ns.expect(model_validator)
     def put(self, id):
+        #error message:Not allowed
         if not isOnDev:
             response = jsonify({'message': 'Not allowed'})
             response.status_code = HttpStatus.NOT_ALLOWED
@@ -121,6 +123,7 @@ class Headlines(Resource):
                   params={
                       'id': 'id of the ' + CURRENT_NAME + ' to delete'})
     def delete(self, id):
+        #error message:Not allowed
         if not isOnDev:
             response = jsonify({'message': 'Not allowed'})
             response.status_code = HttpStatus.NOT_ALLOWED

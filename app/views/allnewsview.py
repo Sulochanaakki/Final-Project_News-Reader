@@ -17,7 +17,7 @@ local_ns = api.namespace('AllNews', description=CURRENT_NAME + ' related operati
 
 #   Database schemas
 allnews_schema = TheSchema()
-allnews_list_schema = TheSchema(many=True)
+
 #   Model required by flask_restx for expect on POST and PUT methods
 model_validator = local_ns.model(CURRENT_NAME, {
     'id': fields.Integer,
@@ -56,7 +56,7 @@ class AllNewsList(Resource):
             return response
         try:
             element_json = request.get_json()
-            element_data = allnews_list_schema.load(element_json)
+            element_data = allnews_schema.load(element_json)
             element_data.save_to_db()
             response = jsonify(element_data.json())
             response.status_code = HttpStatus.CREATED
