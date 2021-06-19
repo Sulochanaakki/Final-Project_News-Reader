@@ -1,8 +1,7 @@
 from flask import request, jsonify
 from flask_restx import Resource, fields
 import json
-from app.views import externalapi
-from app.config import api, isOnDev, project_dir
+from app.config import api, isOnDev, project_dir, db
 
 from app.models.allnewsmodel  import AllNewsModel as TheModel
 from app.schemas.allnewsshema import AllNewsSchema as TheSchema
@@ -20,7 +19,6 @@ allnews_schema = TheSchema()
 
 #   Model required by flask_restx for expect on POST and PUT methods
 model_validator = local_ns.model(CURRENT_NAME, {
-    'id': fields.Integer,
     'source': fields.String,
     'author': fields.String,
     'title': fields.String,
@@ -39,8 +37,6 @@ class AllNewsList(Resource):
             if isOnDev:
                 response = jsonify(TheModel.find_all())
                 response.status_code = HttpStatus.OK
-            else:
-                response = jsonify(externalapi.all_news())
 
         except Exception as e:
             response = jsonify({'message': e.__str__()})
@@ -96,13 +92,12 @@ class AllNews(Resource):
             element_data = TheModel.find_by_id(id)
 
             if element_data:
-                element_data.id = EmptyValues.EMPTY_STRING if request.json['id'] == EmptyValues.EMPTY_STRING else request.json['id']
                 element_data.source = EmptyValues.EMPTY_STRING if request.json['source'] == EmptyValues.EMPTY_STRING else request.json['source']
-                element_data.author = EmptyValues.EMPTY_STRING if request.json['author'] == EmptyValues.EMPTY_STRING else request.json['title']
-                element_data.title = EmptyValues.EMPTY_STRING if request.json['title'] == EmptyValues.EMPTY_STRING else  request.json['state']
+                element_data.author = EmptyValues.EMPTY_STRING if request.json['author'] == EmptyValues.EMPTY_STRING else request.json['author']
+                element_data.title = EmptyValues.EMPTY_STRING if request.json['title'] == EmptyValues.EMPTY_STRING else  request.json['title']
                 element_data.description = EmptyValues.EMPTY_STRING if request.json['description'] == EmptyValues.EMPTY_STRING else request.json['description']
                 element_data.url = EmptyValues.EMPTY_INT if request.json['url'] == EmptyValues.EMPTY_STRING else request.json['url']
-                element_data.urlToImage = EmptyValues.EMPTY_INT if request.json['urlToImage'] == EmptyValues.EMPTY_STRING else request.json['UrlToImage']
+                element_data.urlToImage = EmptyValues.EMPTY_INT if request.json['urlToImage'] == EmptyValues.EMPTY_STRING else request.json['urlToImage']
                 element_data.publishedAt = EmptyValues.EMPTY_INT if request.json['publishedAt'] == EmptyValues.EMPTY_STRING else request.json['publishedAt']
                 element_data.content = EmptyValues.EMPTY_INT if request.json['content'] == EmptyValues.EMPTY_STRING else request.json['content']
                 element_data.save_to_db()
@@ -133,6 +128,19 @@ class AllNews(Resource):
             else:
                 response = jsonify({'message': CURRENT_NAME + ' not found.'})
                 response.status_code = HttpStatus.NOT_FOUND
+        except Exception as e:
+            response = jsonify({'message': e.__str__()})
+            response.status_code = HttpStatus.INTERNAL_ERROR
+        return response
+
+@local_ns.route('/titles')
+class AllnewsTitles(Resource):
+     @local_ns.doc('Get the ' + CURRENT_NAME + ' with the all titles')
+     # params={ + CURRENT_NAME + ' to get'})
+     def get(self):
+        try:
+            response = jsonify('titles:', TheModel.find_by_title())
+            response.status_code = HttpStatus.OK
         except Exception as e:
             response = jsonify({'message': e.__str__()})
             response.status_code = HttpStatus.INTERNAL_ERROR

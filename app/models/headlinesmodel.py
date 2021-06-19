@@ -1,10 +1,13 @@
 from sqlalchemy.orm import relationship
 from app.config import db
+import json
+from app.externalapi import headlines_feed
+
 class HeadlineModel(db.Model):
     __tablename__ ='headlines'
     __table_args__ = {'sqlite_autoincrement': True}
 
-    id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False, autoincrement=True)
+    headline_id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False, autoincrement=True)
     source = db.Column(db.String(500), nullable=False)
     author = db.Column(db.String(500), nullable=False)
     title = db.Column(db.String, nullable=False)
@@ -14,7 +17,7 @@ class HeadlineModel(db.Model):
     publishedAt = db.Column(db.String)
     content = db.Column(db.String)
 
-    #allnews = relationship('AllNewsModel', secondary='sources')
+   # allnews = relationship('AllNewsModel', secondary='sources', backref='HeadlineModel')
 
 
     def __init__(self,source,author,title,description,url,urlToImage,publishedAt,content):
@@ -29,6 +32,7 @@ class HeadlineModel(db.Model):
         self.content = content
 
 
+
     def __repr__(self):
         return 'HeadlineModel(source=%s, author=%s, title=%s, \
                 description=%s, url=%s, urlToImage=%s,publishedAt=%s,content =%s)' % \
@@ -37,7 +41,7 @@ class HeadlineModel(db.Model):
 
     def json(self):
         obj = {
-            'id': self.id,
+            'id': self.headline_id,
             'source': self.source,
             'author': self.author,
             'title': self.title,
@@ -51,8 +55,20 @@ class HeadlineModel(db.Model):
 
 
     @classmethod
-    def find_by_id(cls,_id)->"HeadlineModel":
-        return cls.query.filter_by(id=_id).first()
+    def find_by_id(cls, _id) -> "HeadlineModel":
+        return cls.query.filter_by(headline_id=_id).first()
+
+    @classmethod
+    def find_by_title(cls):
+        query =cls.query.order_by(HeadlineModel.title).all()
+        result = []
+        for query_data in query:
+            result.append(query_data.title)
+            json_data = json.dumps(result)
+        return('title:',json_data)
+
+
+
 
     @classmethod
     def find_all(cls):
@@ -66,6 +82,25 @@ class HeadlineModel(db.Model):
         db.session.add(self)
         db.session.commit()
 
+
+
     def delete_from_db(self):
         db.session.delete(self)
         db.session.commit()
+
+
+    def external_data_to_db(self):
+        headlines_data = headlines_feed()
+        for row in headlines_data:
+            db_record = HeadlineModel(
+            source = row['source'],
+            author = row['author'],
+            title = row['title'],
+            description = row['description'],
+            url = row['url'],
+            urlToImage = row['urlToImage'],
+            publishedAt = row['publishedAt'],
+            content = row['content']
+            )
+        db.add(db_record)
+        db.commit()

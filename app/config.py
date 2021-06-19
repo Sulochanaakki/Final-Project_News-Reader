@@ -21,6 +21,7 @@ ma = Marshmallow(app)
 
 @app.before_first_request
 def create_tables():
+
     db.create_all()
 
 isOnDev = True
@@ -34,11 +35,12 @@ api = Api(app,
 from app.models import allnewsmodel
 from app.models import headlinesmodel
 from app.models import sourcesmodel
-from app.views import externalapi
-#import db_create
-from app.schemas import headlineschema
 
-from app.views import externalapi
-from app.views.headlinesview import HeadlinesList, Headlines
-from app.views.allnewsview import AllNewsList, AllNews
-from app.views.sourcesview import SourcesList, Sources
+#import db_create
+
+
+
+from app.views.headlinesview import HeadlinesList, Headlines,HeadlinesTitle
+from app.views.allnewsview import AllNewsList, AllNews,AllnewsTitles
+from app.views.sourcesview import SourcesList, Sources,SourcesCountry
+

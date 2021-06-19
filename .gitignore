@@ -1,7 +1,9 @@
+#Secret Floder
+.secret/
+.apykey/
 *.db
 *.pyc
 .idea/
-allnewsschema.py
-sourcesschema.py
+.apikey/
 main.py
 Final-Project_News-Reader

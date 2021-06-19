@@ -1,7 +1,6 @@
 from flask import request, jsonify
 from flask_restx import Resource, fields
 import json
-from app.views import externalapi
 from app.config import api, isOnDev,project_dir
 
 from app.models.headlinesmodel import HeadlineModel as TheModel
@@ -20,7 +19,6 @@ headline_schema = TheSchema()
 #headline_list_schema = TheSchema(many=True)
 #   Model required by flask_restx for expect on POST and PUT methods
 model_validator = local_ns.model(CURRENT_NAME, {
-    'id': fields.Integer,
     'source': fields.String,
     'author': fields.String,
     'title': fields.String,
@@ -39,8 +37,6 @@ class HeadlinesList(Resource):
             if isOnDev:
                 response = jsonify(TheModel.find_all())
                 response.status_code = HttpStatus.OK
-            else:
-                response = jsonify(externalapi.headlines())
 
         except Exception as e:
             response = jsonify({'message': e.__str__()})
@@ -85,6 +81,7 @@ class Headlines(Resource):
             response.status_code = HttpStatus.INTERNAL_ERROR
         return response
 
+
     @local_ns.doc('Update an ' + CURRENT_NAME + ' with the specified id',
                   params={
                       'id': 'id of the ' + CURRENT_NAME + ' to update'})
@@ -99,10 +96,9 @@ class Headlines(Resource):
             element_data = TheModel.find_by_id(id)
 
             if element_data:
-                element_data.id = EmptyValues.EMPTY_STRING if request.json['id'] == EmptyValues.EMPTY_STRING else request.json['id']
                 element_data.source = EmptyValues.EMPTY_STRING if request.json['source'] == EmptyValues.EMPTY_STRING else request.json['source']
-                element_data.author = EmptyValues.EMPTY_STRING if request.json['author'] == EmptyValues.EMPTY_STRING else request.json['title']
-                element_data.title = EmptyValues.EMPTY_STRING if request.json['title'] == EmptyValues.EMPTY_STRING else  request.json['state']
+                element_data.author = EmptyValues.EMPTY_STRING if request.json['author'] == EmptyValues.EMPTY_STRING else request.json['author']
+                element_data.title = EmptyValues.EMPTY_STRING if request.json['title'] == EmptyValues.EMPTY_STRING else  request.json['title']
                 element_data.description = EmptyValues.EMPTY_STRING if request.json['description'] == EmptyValues.EMPTY_STRING else request.json['description']
                 element_data.url = EmptyValues.EMPTY_INT if request.json['url'] == EmptyValues.EMPTY_STRING else request.json['url']
                 element_data.urlToImage = EmptyValues.EMPTY_INT if request.json['urlToImage'] == EmptyValues.EMPTY_STRING else request.json['UrlToImage']
@@ -141,6 +137,21 @@ class Headlines(Resource):
             response = jsonify({'message': e.__str__()})
             response.status_code = HttpStatus.INTERNAL_ERROR
         return response
+
+@local_ns.route('/titles')
+class HeadlinesTitle(Resource):
+    @local_ns.doc('Get the ' + CURRENT_NAME + ' with the all titles')
+                  #params={ + CURRENT_NAME + ' to get'})
+    def get(self):
+        try:
+            response = jsonify(TheModel.find_by_title())
+            response.status_code = HttpStatus.OK
+        except Exception as e:
+            response = jsonify({'message': e.__str__()})
+            response.status_code = HttpStatus.INTERNAL_ERROR
+        return response
+
+
 
 
 

@@ -1,10 +1,13 @@
+import json
+from app.externalapi import all_news_feed
 from sqlalchemy.orm import relationship
 from app.config import db
+from app.models.headlinesmodel import HeadlineModel
 class AllNewsModel(db.Model):
     __tablename__ ='allnews'
     __table_args__ = {'sqlite_autoincrement': True}
 
-    id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False, autoincrement=True)
+    allnews_id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False, autoincrement=True)
     source = db.Column(db.String(500), nullable=False)
     author = db.Column(db.String(500), nullable=False)
     title = db.Column(db.String, nullable=False)
@@ -15,7 +18,7 @@ class AllNewsModel(db.Model):
     content = db.Column(db.String)
 
 
-    #headlines = relationship('HeadlineModel',secondary = 'sources')
+    #headline = relationship('HeadlineModel',secondary = 'sources',backref='AllNewsModel')
 
 
     def __init__(self,source,author,title,description,url,urlToImage,publishedAt,content):
@@ -29,6 +32,9 @@ class AllNewsModel(db.Model):
         self.content = content
 
 
+
+
+
     def __repr__(self):
         return 'HeadlineModel(source=%s, author=%s, title=%s, \
                 description=%s, url=%s, urlToImage=%s,publishedAt=%s,content =%s)' % \
@@ -37,8 +43,18 @@ class AllNewsModel(db.Model):
 
 
     def json(self):
+
+        ''' #Getting all news with headlines
+        allnews_headline_list = []
+        allnews_headlines = AllNewsWithHeadlinesModel.query.filter_by(allnews_id=self.allnews_id)
+        for allnewsheadline in allnews_headlines:
+            headlines = HeadlineModel.query.filter_by(headline_id=allnewsheadline.headline_id)
+            for headline in headlines:
+                allnews_headline_list.append(headline.title)'''
+
+
         obj = {
-            'id' : self.id,
+            'id' : self.allnews_id,
             'source': self.source,
             'author' : self.author,
              'title' : self.title,
@@ -46,13 +62,23 @@ class AllNewsModel(db.Model):
              'url' : self.url,
              'urlToImage':  self.urlToImage,
               'publishedAt': self.publishedAt,
-            'content': self.content
+            'content': self.content,
+           # 'headline': allnews_headline_list
         }
         return obj
 
     @classmethod
     def find_by_id(cls, _id) -> "AllNewsModel":
-        return cls.query.filter_by(id=_id).first()
+        return cls.query.filter_by(allnews_id=_id).first()
+
+    @classmethod
+    def find_by_title(cls):
+        query = cls.query.order_by(AllNewsModel.title).all()
+        result = []
+        for query_data in query:
+            result.append(query_data.title)
+            json_data = json.dumps(result)
+        return json_data
 
     @classmethod
     def find_all(cls):
@@ -66,6 +92,23 @@ class AllNewsModel(db.Model):
         db.session.add(self)
         db.session.commit()
 
+
     def delete_from_db(self):
         db.session.delete(self)
         db.session.commit()
+    #@classmethod
+    def external_data_to_db(self):
+        headlines_data = all_news_feed()
+        for row in headlines_data:
+            db_record = HeadlineModel(
+                source=row['source'],
+                author=row['author'],
+                title=row['title'],
+                description=row['description'],
+                url=row['url'],
+                urlToImage=row['urlToImage'],
+                publishedAt=row['publishedAt'],
+                content=row['content']
+            )
+        db.add(db_record)
+        db.commit()
