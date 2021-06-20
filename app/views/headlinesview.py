@@ -5,7 +5,7 @@ from app.config import api, isOnDev,project_dir
 
 from app.models.headlinesmodel import HeadlineModel as TheModel
 from app.schemas.headlineschema import HeadlineSchema as TheSchema
-from app.const import HttpStatus,EmptyValues
+from const import HttpStatus,EmptyValues
 
 #   Name of the current item/element
 CURRENT_NAME = 'Headlines'

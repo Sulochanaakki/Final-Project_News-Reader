@@ -43,4 +43,4 @@ from app.models import sourcesmodel
 from app.views.headlinesview import HeadlinesList, Headlines,HeadlinesTitle
 from app.views.allnewsview import AllNewsList, AllNews,AllnewsTitles
 from app.views.sourcesview import SourcesList, Sources,SourcesCountry
-
+from app import build_databse

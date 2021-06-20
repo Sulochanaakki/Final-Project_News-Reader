@@ -1,16 +1,16 @@
 import json
-from app.externalapi import sources_feed
+from externalapi import sources_feed
 from sqlalchemy.orm import relationship, backref
 from app.config import db
 
 
 class SourceModel(db.Model):
     __tablename__ ='sources'
-    __table_args__ = {'sqlite_autoincrement': True}
+    __table_args__ = {'extend_existing': True}
 
     id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False, autoincrement=True)
-    headlines_id =db.Column(db.Integer, db.ForeignKey('headlines.headline_id'))
-    allnews_id = db.Column(db.Integer, db.ForeignKey('allnews.allnews_id'))
+   # headlines_id =db.Column(db.Integer, db.ForeignKey('headlines.headline_id'))
+    #allnews_id = db.Column(db.Integer, db.ForeignKey('allnews.allnews_id'))
     name = db.Column(db.String(255))
     description = db.Column(db.String)
     url = db.Column(db.String)
@@ -22,10 +22,7 @@ class SourceModel(db.Model):
     #allnews = relationship(AllNewsModel, backref=backref("allnews", cascade="all, delete-orphan"))
 
 
-    def __init__(self,id,headlines_id,allnews_id,name,description,url,category,language,country):
-        self.id = id
-        self.headlines_id = headlines_id
-        self.allnews_id = allnews_id
+    def __init__(self,name,description,url,category,language,country):
         self.name = name
         self.description = description
         self.url = url
@@ -37,8 +34,6 @@ class SourceModel(db.Model):
     def json(self):
         obj = {
             'id': self.id,
-            'headlines_id': self.headlines_id,
-            'allnews_id': self.allnews_id,
             'name': self.name,
             'description': self.description,
             'url': self.url,
@@ -84,20 +79,6 @@ class SourceModel(db.Model):
         db.session.delete(self)
         db.session.commit()
 
-    @classmethod
-    def external_data_to_db(cls):
-        source_data = sources_feed()
-        for row in source_data:
-            db_record = SourceModel(
-            name = row['name'],
-            description = row['description'],
 
-            url = row['url'],
-            category = row['category'],
-            language = row['language'],
-            country = row['country']
-            )
-        db.add(db_record)
-        db.commit()
 
 

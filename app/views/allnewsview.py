@@ -17,6 +17,7 @@ local_ns = api.namespace('AllNews', description=CURRENT_NAME + ' related operati
 #   Database schemas
 allnews_schema = TheSchema()
 
+
 #   Model required by flask_restx for expect on POST and PUT methods
 model_validator = local_ns.model(CURRENT_NAME, {
     'source': fields.String,

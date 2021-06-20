@@ -2,7 +2,7 @@ from flask import request, jsonify
 from flask_restx import Resource, fields
 import json
 from app.config import api, isOnDev, project_dir
-from app.externalapi import *
+from externalapi import *
 
 from app.models.sourcesmodel  import SourceModel as TheModel
 from app.schemas.sourceschema import SourceSchema as TheSchema
@@ -20,8 +20,6 @@ source_schema = TheSchema()
 #headline_list_schema = TheSchema(many=True)
 #   Model required by flask_restx for expect on POST and PUT methods
 model_validator = local_ns.model(CURRENT_NAME, {
-            'headlines_id': fields.Integer,
-            'allnews_id': fields.Integer,
             'name': fields.String,
             'description': fields.String,
             'url': fields.String,

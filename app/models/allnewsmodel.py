@@ -1,11 +1,14 @@
 import json
-from app.externalapi import all_news_feed
+#from app.externalapi import all_news_feed
 from sqlalchemy.orm import relationship
 from app.config import db
-from app.models.headlinesmodel import HeadlineModel
+from models.headlinesmodel import HeadlineModel
 class AllNewsModel(db.Model):
     __tablename__ ='allnews'
-    __table_args__ = {'sqlite_autoincrement': True}
+    __table_args__ = {'extend_existing': True}
+    #__table_args__ = {'sqlite_autoincrement': True}
+
+
 
     allnews_id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False, autoincrement=True)
     source = db.Column(db.String(500), nullable=False)
@@ -96,19 +99,7 @@ class AllNewsModel(db.Model):
     def delete_from_db(self):
         db.session.delete(self)
         db.session.commit()
-    #@classmethod
-    def external_data_to_db(self):
-        headlines_data = all_news_feed()
-        for row in headlines_data:
-            db_record = HeadlineModel(
-                source=row['source'],
-                author=row['author'],
-                title=row['title'],
-                description=row['description'],
-                url=row['url'],
-                urlToImage=row['urlToImage'],
-                publishedAt=row['publishedAt'],
-                content=row['content']
-            )
-        db.add(db_record)
-        db.commit()
+
+
+
+
