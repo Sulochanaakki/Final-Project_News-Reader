@@ -1,4 +1,4 @@
-from app.config import ma
+from app.config import ma, db
 from app.models.allnewsmodel import AllNewsModel
 
 class AllNewsSchema(ma.SQLAlchemyAutoSchema):

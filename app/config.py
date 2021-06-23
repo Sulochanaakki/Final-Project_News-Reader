@@ -7,7 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 #   Configure for local test
 #   This works with SQLite3
 project_dir = os.path.dirname(os.path.abspath(__file__))
-database_file = "sqlite:///{}".format(os.path.join(project_dir, "newsdatabase.sqlite"))
+database_file = "sqlite:///{}".format(os.path.join(project_dir, "db/newsdatabase.sqlite"))
 
 # Config app
 app = Flask(__name__)
@@ -19,7 +19,12 @@ app.config['JSON_AS_ASCII'] = False
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
-isOnDev = False
+@app.before_first_request
+def create_tables():
+
+    db.create_all()
+
+isOnDev = True
 app.debug = isOnDev
 
 api = Api(app,
@@ -30,8 +35,12 @@ api = Api(app,
 from app.models import allnewsmodel
 from app.models import headlinesmodel
 from app.models import sourcesmodel
-from app.views import externalapi
-#import db_create
-from app.schemas import headlineschema
 
-from app.views.headlinesview import HeadlinesList
+#import db_create
+
+
+
+from app.views.headlinesview import HeadlinesList, Headlines,HeadlinesTitle
+from app.views.allnewsview import AllNewsList, AllNews,AllnewsTitles
+from app.views.sourcesview import SourcesList, Sources,SourcesCountry
+from app import build_databse

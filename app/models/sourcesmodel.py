@@ -1,16 +1,16 @@
-
+import json
+from externalapi import sources_feed
 from sqlalchemy.orm import relationship, backref
-from app.models.allnewsmodel import AllNewsModel
-from app.models.headlinesmodel import HeadlineModel
 from app.config import db
+
 
 class SourceModel(db.Model):
     __tablename__ ='sources'
-    __table_args__ = {'sqlite_autoincrement': True}
+    __table_args__ = {'extend_existing': True}
 
     id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False, autoincrement=True)
-    headlines_id =db.Column(db.Integer,db.ForeignKey('headlines.id'))
-    allnews_id = db.Column(db.Integer, db.ForeignKey('allnews.id'))
+   # headlines_id =db.Column(db.Integer, db.ForeignKey('headlines.headline_id'))
+    #allnews_id = db.Column(db.Integer, db.ForeignKey('allnews.allnews_id'))
     name = db.Column(db.String(255))
     description = db.Column(db.String)
     url = db.Column(db.String)
@@ -18,14 +18,11 @@ class SourceModel(db.Model):
     language = db.Column(db.String(100))
     country = db.Column(db.String(100))
 
-    headline = relationship(HeadlineModel, backref=backref("headlines", cascade="all, delete-orphan"))
-    allnews = relationship(AllNewsModel, backref=backref("allnews", cascade="all, delete-orphan"))
+    #headline = relationship(HeadlineModel, backref=backref("headlines", cascade="all, delete-orphan"))
+    #allnews = relationship(AllNewsModel, backref=backref("allnews", cascade="all, delete-orphan"))
 
 
-    def __init__(self,id,headlines_id,allnews_id,name,description,url,category,language,country):
-        self.id = id
-        self.headlines_id = headlines_id
-        self.allnews_id = allnews_id
+    def __init__(self,name,description,url,category,language,country):
         self.name = name
         self.description = description
         self.url = url
@@ -36,9 +33,7 @@ class SourceModel(db.Model):
 
     def json(self):
         obj = {
-            'id': id,
-            'headlines_id': self.headlines_id,
-            'allnews_id': self.allnews_id,
+            'id': self.id,
             'name': self.name,
             'description': self.description,
             'url': self.url,
@@ -64,6 +59,18 @@ class SourceModel(db.Model):
             result.append(one_element.json())
         return result
 
+
+    @classmethod
+    def find_by_country(cls, country) -> "SourceModel":
+        query = cls.query.filter_by(country=country).all()
+        result = []
+        for query_data in query:
+            result.append(query_data)
+            json_data = json.dumps(result)
+        return ('title:', json_data)
+
+
+
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()
@@ -71,5 +78,7 @@ class SourceModel(db.Model):
     def delete_from_db(self):
         db.session.delete(self)
         db.session.commit()
+
+
 
 

@@ -1,22 +1,23 @@
 from flask import request, jsonify
 from flask_restx import Resource, fields
 import json
-from app.config import api, isOnDev,project_dir
+from app.config import api, isOnDev, project_dir, db
 
-from app.models.headlinesmodel import HeadlineModel as TheModel
-from app.schemas.headlineschema import HeadlineSchema as TheSchema
-from const import HttpStatus,EmptyValues
+from app.models.allnewsmodel  import AllNewsModel as TheModel
+from app.schemas.allnewsshema import AllNewsSchema as TheSchema
+from app.const import HttpStatus,EmptyValues
 
 #   Name of the current item/element
-CURRENT_NAME = 'Headlines'
+CURRENT_NAME = 'AllNews'
 
 
 #   Namespace to route
-local_ns = api.namespace('Headlines', description=CURRENT_NAME + ' related operations')
+local_ns = api.namespace('AllNews', description=CURRENT_NAME + ' related operations')
 
 #   Database schemas
-headline_schema = TheSchema()
-#headline_list_schema = TheSchema(many=True)
+allnews_schema = TheSchema()
+
+
 #   Model required by flask_restx for expect on POST and PUT methods
 model_validator = local_ns.model(CURRENT_NAME, {
     'source': fields.String,
@@ -30,7 +31,7 @@ model_validator = local_ns.model(CURRENT_NAME, {
 })
 
 @local_ns.route('/')
-class HeadlinesList(Resource):
+class AllNewsList(Resource):
     @local_ns.doc('Get all the' +CURRENT_NAME+ 's')
     def get(self):
         try:
@@ -45,7 +46,6 @@ class HeadlinesList(Resource):
 
     @local_ns.doc('Create an ' + CURRENT_NAME)
     @local_ns.expect(model_validator)
-    #response error getting message:Not allowed
     def post(self):
         if not isOnDev:
             response = jsonify({'message': 'Not allowed'})
@@ -53,7 +53,7 @@ class HeadlinesList(Resource):
             return response
         try:
             element_json = request.get_json()
-            element_data = headline_schema.load(element_json)
+            element_data = allnews_schema.load(element_json)
             element_data.save_to_db()
             response = jsonify(element_data.json())
             response.status_code = HttpStatus.CREATED
@@ -64,7 +64,7 @@ class HeadlinesList(Resource):
 
 
 @local_ns.route('/<int:id>')
-class Headlines(Resource):
+class AllNews(Resource):
     @local_ns.doc('Get the ' + CURRENT_NAME + ' with the specified id',
                   params={'id': 'id of the ' + CURRENT_NAME + ' to get'})
     def get(self, id):
@@ -81,13 +81,10 @@ class Headlines(Resource):
             response.status_code = HttpStatus.INTERNAL_ERROR
         return response
 
-
     @local_ns.doc('Update an ' + CURRENT_NAME + ' with the specified id',
-                  params={
-                      'id': 'id of the ' + CURRENT_NAME + ' to update'})
+                  params={'id': 'id of the ' + CURRENT_NAME + ' to update'})
     @local_ns.expect(model_validator)
     def put(self, id):
-        #error message:Not allowed
         if not isOnDev:
             response = jsonify({'message': 'Not allowed'})
             response.status_code = HttpStatus.NOT_ALLOWED
@@ -101,7 +98,7 @@ class Headlines(Resource):
                 element_data.title = EmptyValues.EMPTY_STRING if request.json['title'] == EmptyValues.EMPTY_STRING else  request.json['title']
                 element_data.description = EmptyValues.EMPTY_STRING if request.json['description'] == EmptyValues.EMPTY_STRING else request.json['description']
                 element_data.url = EmptyValues.EMPTY_INT if request.json['url'] == EmptyValues.EMPTY_STRING else request.json['url']
-                element_data.urlToImage = EmptyValues.EMPTY_INT if request.json['urlToImage'] == EmptyValues.EMPTY_STRING else request.json['UrlToImage']
+                element_data.urlToImage = EmptyValues.EMPTY_INT if request.json['urlToImage'] == EmptyValues.EMPTY_STRING else request.json['urlToImage']
                 element_data.publishedAt = EmptyValues.EMPTY_INT if request.json['publishedAt'] == EmptyValues.EMPTY_STRING else request.json['publishedAt']
                 element_data.content = EmptyValues.EMPTY_INT if request.json['content'] == EmptyValues.EMPTY_STRING else request.json['content']
                 element_data.save_to_db()
@@ -119,7 +116,6 @@ class Headlines(Resource):
                   params={
                       'id': 'id of the ' + CURRENT_NAME + ' to delete'})
     def delete(self, id):
-        #error message:Not allowed
         if not isOnDev:
             response = jsonify({'message': 'Not allowed'})
             response.status_code = HttpStatus.NOT_ALLOWED
@@ -139,22 +135,14 @@ class Headlines(Resource):
         return response
 
 @local_ns.route('/titles')
-class HeadlinesTitle(Resource):
-    @local_ns.doc('Get the ' + CURRENT_NAME + ' with the all titles')
-                  #params={ + CURRENT_NAME + ' to get'})
-    def get(self):
+class AllnewsTitles(Resource):
+     @local_ns.doc('Get the ' + CURRENT_NAME + ' with the all titles')
+     # params={ + CURRENT_NAME + ' to get'})
+     def get(self):
         try:
-            response = jsonify(TheModel.find_by_title())
+            response = jsonify('titles:', TheModel.find_by_title())
             response.status_code = HttpStatus.OK
         except Exception as e:
             response = jsonify({'message': e.__str__()})
             response.status_code = HttpStatus.INTERNAL_ERROR
         return response
-
-
-
-
-
-
-
-
