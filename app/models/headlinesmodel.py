@@ -5,20 +5,20 @@ class HeadlineModel(db.Model):
     __table_args__ = {'sqlite_autoincrement': True}
 
     id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False, autoincrement=True)
-    source = db.Column(db.String(200))
-    author = db.Column(db.String(500))
-    title = db.Column(db.String)
-    description = db.Column(db.String)
+    source = db.Column(db.String(500), nullable=False)
+    author = db.Column(db.String(500), nullable=False)
+    title = db.Column(db.String, nullable=False)
+    description = db.Column(db.String, nullable=False)
     url = db.Column(db.String)
     urlToImage = db.Column(db.String)
     publishedAt = db.Column(db.String)
     content = db.Column(db.String)
 
-    allnews = relationship('AllNewsModel', secondary='sources')
+    #allnews = relationship('AllNewsModel', secondary='sources')
 
 
-    def __init__(self,id,source,author,title,description,url,urlToImage,publishedAt,content):
-        self.id = id
+    def __init__(self,source,author,title,description,url,urlToImage,publishedAt,content):
+
         self.source = source
         self.author = author
         self.title = title
@@ -28,6 +28,12 @@ class HeadlineModel(db.Model):
         self.publishedAt = publishedAt
         self.content = content
 
+
+    def __repr__(self):
+        return 'HeadlineModel(source=%s, author=%s, title=%s, \
+                description=%s, url=%s, urlToImage=%s,publishedAt=%s,content =%s)' % \
+               (self.name, self.author, self.title, self.description, self.url,
+                self.urlToImage, self.publishedAt, self.content)
 
     def json(self):
         obj = {
