@@ -1,3 +1,7 @@
 *.db
 *.pyc
 .idea/
+allnewsschema.py
+sourcesschema.py
+main.py
+Final-Project_News-Reader

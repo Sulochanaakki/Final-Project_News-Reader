@@ -1,10 +1,10 @@
 from sqlalchemy.orm import relationship
-from app.models.basemodel import Base
 from app.config import db
-class AllNewsModel(Base):
+class AllNewsModel(db.Model):
     __tablename__ ='allnews'
     __table_args__ = {'sqlite_autoincrement': True}
 
+    id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False, autoincrement=True)
     source = db.Column(db.String(200))
     author = db.Column(db.String(500))
     title = db.Column(db.String)
@@ -18,7 +18,8 @@ class AllNewsModel(Base):
     headlines = relationship('HeadlineModel',secondary = 'sources')
 
 
-    def __init__(self,source,author,title,description,url,urlToImage,publishedAt,content):
+    def __init__(self,id,source,author,title,description,url,urlToImage,publishedAt,content):
+        self.id = id
         self.source = source
         self.author = author
         self.title = title
@@ -30,6 +31,7 @@ class AllNewsModel(Base):
 
     def json(self):
         obj = {
+            'id' : self.id,
             'source': self.source,
             'author' : self.author,
              'title' : self.title,

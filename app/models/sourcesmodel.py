@@ -1,14 +1,14 @@
-from app.models.basemodel import Base
+
 from sqlalchemy.orm import relationship, backref
 from app.models.allnewsmodel import AllNewsModel
 from app.models.headlinesmodel import HeadlineModel
 from app.config import db
 
-class SourceModel(Base):
+class SourceModel(db.Model):
     __tablename__ ='sources'
     __table_args__ = {'sqlite_autoincrement': True}
 
-
+    id = db.Column(db.Integer, primary_key=True, unique=True, nullable=False, autoincrement=True)
     headlines_id =db.Column(db.Integer,db.ForeignKey('headlines.id'))
     allnews_id = db.Column(db.Integer, db.ForeignKey('allnews.id'))
     name = db.Column(db.String(255))
@@ -22,7 +22,8 @@ class SourceModel(Base):
     allnews = relationship(AllNewsModel, backref=backref("allnews", cascade="all, delete-orphan"))
 
 
-    def __init__(self,headlines_id,allnews_id,name,description,url,category,language,country):
+    def __init__(self,id,headlines_id,allnews_id,name,description,url,category,language,country):
+        self.id = id
         self.headlines_id = headlines_id
         self.allnews_id = allnews_id
         self.name = name
@@ -35,6 +36,7 @@ class SourceModel(Base):
 
     def json(self):
         obj = {
+            'id': id,
             'headlines_id': self.headlines_id,
             'allnews_id': self.allnews_id,
             'name': self.name,
